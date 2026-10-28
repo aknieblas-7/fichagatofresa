@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gato Fresa - Calcetas y Medias Alternativas</title>
+    <style>
+        :root {
+            --primary: #ff4937;
+            --secondary: #111111;
+            --bg-light: #fff9f8;
+            --text-dark: #222222;
+            --gray: #666666;
+            --light-gray: #f2f2f2;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Cabecera / Navbar */
+        header {
+            background: var(--white);
+            border-bottom: 2px solid var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .logo-area span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-nav-cta:hover {
+            background: #e03825;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .badge-alt {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 14px rgba(255, 73, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #e03825;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--secondary);
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border: 2px solid var(--secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--white);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 3px solid var(--secondary);
+        }
+
+        /* Propuesta de Valor */
+        .value-prop {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .value-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .value-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .value-container h2 span {
+            color: var(--primary);
+        }
+
+        .value-container p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Beneficios / Conexión Buyer Persona (Alex) */
+        .benefits {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--secondary);
+            box-shadow: 4px 4px 0px var(--secondary);
+            transition: transform 0.2s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .benefit-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Ficha Técnica / Atributos */
+        .specs {
+            background: var(--white);
+            border-top: 2px solid var(--secondary);
+            border-bottom: 2px solid var(--secondary);
+            padding: 6rem 2rem;
+        }
+
+        .specs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .specs-list {
+            list-style: none;
+        }
+
+        .specs-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .specs-list li span:last-child {
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        /* Galería visual */
+        .gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 8px;
+            border: 3px solid var(--secondary);
+            box-shadow: 8px 8px 0px var(--secondary);
+        }
+
+        /* Objeciones y FAQ */
+        .faq-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 2px solid var(--secondary);
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 3px 3px 0px var(--secondary);
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Bloque Final de Conversión */
+        .conversion-block {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .conversion-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .conversion-container h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .conversion-container p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .conversion-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--secondary);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+
+        .btn-light:hover {
+            transform: translateY(-2px);
+            background: var(--light-gray);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: #aaaaaa;
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: #aaaaaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #333333;
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .benefits-grid, .specs-container, .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                🍓 GATO <span>FRESA</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#detalles">Detalles</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#comprar" class="btn-nav-cta">Comprar Ahora</a>
+        </div>
+    </header>
+
+    <!-- Hero de Producto -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge-alt">Colección Alternativa & Streetwear</span>
+            <h1>Calcetas con personalidad para gente que <span>no nació para combinar con todo</span>.</h1>
+            <p>Transforma cualquier outfit cotidiano en una declaración de identidad. Diseños originales, estampados atrevidos y máxima comodidad para destacar.</p>
+            <div class="hero-cta-group">
+                <a href="#comprar" class="btn-primary">Comprar Ahora</a>
+                <a href="#detalles" class="btn-secondary">Ver Ficha Técnica</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <img src="calceta.jpg" alt="Calcetas Largas Estampadas Gato Fresa" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Propuesta de Valor -->
+    <section class="value-prop">
+        <div class="value-container">
+            <h2>Tu persona, <span>tus reglas</span>.</h2>
+            <p>En GATO FRESA no nos limitamos a cubrir tus pies; creamos accesorios con carácter, diseño y actitud. Diseñado para creativos, amantes del streetwear y espíritus libres que buscan marcar la diferencia sin esfuerzo.</p>
+        </div>
+    </section>
+
+    <!-- Beneficios conectados al Buyer Persona -->
+    <section class="benefits" id="beneficios">
+        <h2 class="section-title">¿Por qué elegir Gato Fresa?</h2>
+        <p class="section-subtitle">Diseñadas específicamente para conectar con tu estilo de vida urbano y alternativo.</p>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">✨</div>
+                <h3>Expresión Única</h3>
+                <p>Rompe con los diseños básicos y aburridos. Convierte un detalle sutil en el eje central de tu personalidad y look diario.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎨</div>
+                <h3>Estética Atrevida</h3>
+                <p>Combinaciones de colores vibrantes y estampados llamativos que conectan directamente con tendencias streetwear y underground.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Calidad y Confort</h3>
+                <p>Materiales duraderos y de gran calidad que garantizan un ajuste perfecto y cómodo para acompañarte todo el día.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ficha Técnica / Atributos -->
+    <section class="specs" id="detalles">
+        <div class="specs-container">
+            <div>
+                <span class="badge-alt">Ficha Técnica</span>
+                <h2 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 1.5rem; color: var(--secondary);">Detalles del Producto</h2>
+                <p style="color: var(--gray); margin-bottom: 2rem;">Cada par está fabricado cuidando los acabados para asegurar que el diseño original mantenga su viveza y comodidad uso tras uso.</p>
+                <a href="#comprar" class="btn-primary">Reservar / Comprar</a>
+            </div>
+            <div>
+                <ul class="specs-list">
+                    <li><span>Marca</span> <span>GATO FRESA</span></li>
+                    <li><span>Estilo</span> <span>Calcetas Largas Estampadas</span></li>
+                    <li><span>Uso recomendado</span> <span>Streetwear, looks alternativos</span></li>
+                    <li><span>Materiales</span> <span>Mezcla premium transpirable</span></li>
+                    <li><span>Identidad</span> <span>Diseño independiente y urbano</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery">
+        <h2 class="section-title">Inspiración de Estilo</h2>
+        <p class="section-subtitle">Llévalות con zapatos de punta, faldas o tu outfit favorito de diario.</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="calceta.jpg" alt="Look alternativo Gato Fresa">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / Objeciones -->
+    <section class="faq-section" id="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Resolvemos tus dudas sobre nuestros productos.</p>
+
+        <div class="faq-item">
+            <h4>¿Por qué comprar calcetas de diseño en lugar de unas convencionales?</h4>
+            <p>Porque aportan personalidad instantánea y permiten diferenciar cualquier outfit sencillo convirtiéndolo en un look con identidad propia.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>¿Son cómodas para el día a día?</h4>
+            <p>Sí, priorizamos tanto la estética como la comodidad y el ajuste mediante materiales de alta calidad aptos para uso prolongado.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>¿Cómo sé qué talla elegir?</h4>
+            <p>Nuestros modelos cuentan con elasticidad adaptativa pensada para ajustarse cómodamente a diferentes perfiles.</p>
+        </div>
+    </section>
+
+    <!-- Bloque Final de Conversión -->
+    <section class="conversion-block" id="comprar">
+        <div class="conversion-container">
+            <h2>¿Lista para destacar?</h2>
+            <p>Hazte con tus calcetas Gato Fresa o ponte en contacto con nosotros para reservas y acuerdos profesionales.</p>
+            <div class="conversion-buttons">
+                <a href="mailto:hola@gatofresa.example?subject=Compra%20de%20Calcetas%20Gato%20Fresa" class="btn-light">Comprar / Pedir Ahora</a>
+                <a href="mailto:hola@gatofresa.example?subject=Acuerdo%20o%20Reserva" class="btn-outline-light">Contactar con Ana Nieblas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>GATO FRESA</h3>
+                <p>Tu persona, tus reglas. Accesorios alternativos para gente con actitud.</p>
+                <p style="margin-top: 1rem;">Persona de contacto: Ana Nieblas</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>Calle de la Moda Alternativa, 24, 28004 Madrid, España</p>
+                <p>Teléfono: +34 000 123 456</p>
+                <p>Email: <a href="mailto:hola@gatofresa.example">hola@gatofresa.example</a></p>
+                <p>RGPD: <a href="mailto:privacidad@gatofresa.example">privacidad@gatofresa.example</a></p>
+            </div>
+            <div class="footer-col">
+                <h3>Horario y Ubicación</h3>
+                <p>Lunes a viernes, de 09:00 a 18:00</p>
+                <p><a href="https://maps.google.com/?q=Calle+de+la+Moda+Alternativa+24+Madrid" target="_blank">Ver en Google Maps</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 GATO FRESA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
